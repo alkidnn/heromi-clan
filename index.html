@@ -9,43 +9,54 @@
     <!-- Иконки Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
+        /* ПАЛИТРА HAPPY HUES #11 */
+        :root {
+            --bg-color: #f9f4ef;       /* Фон */
+            --headline-color: #020826; /* Заголовки */
+            --text-color: #716040;     /* Текст абзацев */
+            --btn-color: #8c7851;      /* Кнопки */
+            --btn-text: #fffffe;       /* Текст кнопок */
+            --accent-color: #f25042;   /* Акцент (красный) */
+            --card-bg: #ffffff;        /* Фон карточек (белый для контраста) */
+            --nav-bg: rgba(249, 244, 239, 0.95); /* Полупрозрачный фон навбара */
+        }
+
         body {
-            background-color: #0a0e27;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .navbar {
-            background-color: rgba(22, 33, 62, 0.95) !important;
-            backdrop-filter: blur(10px);
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            color: var(--headline-color) !important;
+            font-weight: 700;
         }
+
+        .navbar {
+            background-color: var(--nav-bg) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(140, 120, 81, 0.1);
+        }
+
         .hero-section {
             padding: 120px 0 80px;
             text-align: center;
-            background: linear-gradient(135deg, #1a1f4d 0%, #0a0e27 100%);
-            position: relative;
-            overflow: hidden;
+            /* Лёгкий градиент на основе фона */
+            background: linear-gradient(180deg, #f9f4ef 0%, #f0eadd 100%);
         }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
-        }
+
         .hero-title {
             font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--headline-color);
         }
+
         .section-title {
             position: relative;
             padding-bottom: 15px;
+            margin-bottom: 3rem;
         }
+        
+        /* Линия под заголовком теперь золотистая */
         .section-title::after {
             content: '';
             position: absolute;
@@ -54,77 +65,89 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: var(--btn-color);
         }
+
         .card {
-            background-color: #16213e;
-            border: 1px solid #2a3f5f;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(140, 120, 81, 0.2);
+            border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
+
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(140, 120, 81, 0.15);
         }
+
         .feature-icon {
             font-size: 2.5rem;
-            color: #667eea;
+            color: var(--btn-color); /* Иконки в цвет кнопок */
             margin-bottom: 15px;
         }
+
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
+            background-color: var(--btn-color);
+            border-color: var(--btn-color);
+            color: var(--btn-text);
             padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            background-color: var(--headline-color); /* При наведении становится тёмно-синим */
+            border-color: var(--headline-color);
+            color: #fff;
         }
+
         footer {
-            background-color: #0f1535;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 1px solid #2a3f5f;
+            background-color: #efe9e0; /* Чуть темнее фона страницы */
+            padding: 40px 0;
+            margin-top: 60px;
+            color: var(--text-color);
         }
+
         .stats-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid #2a3f5f;
-            border-radius: 10px;
-            padding: 20px;
+            background-color: #fff;
+            border: 1px solid rgba(140, 120, 81, 0.15);
+            border-radius: 12px;
+            padding: 25px;
             text-align: center;
         }
+
         .stats-number {
             font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-weight: 800;
+            color: var(--headline-color);
+            line-height: 1.2;
+        }
+        
+        /* Акцентный текст (например, для важных слов) */
+        .text-accent {
+            color: var(--accent-color);
         }
     </style>
 </head>
 <body>
     <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-shield-fill"></i> HΞRØMI [HΞRØ]
+                <i class="bi bi-shield-fill-check text-accent"></i> HΞRØMI [HΞRØ]
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">О клане</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Преимущества</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#requirements">Требования</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Контакты</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Преимущества</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#requirements">Вступить</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -134,10 +157,13 @@
     <section id="home" class="hero-section">
         <div class="container position-relative">
             <h1 class="hero-title mb-3">HΞRØMI [HΞRØ]</h1>
-            <p class="lead mb-4">Элитный клан в игре RAID SL</p>
-            <p class="mb-4">Присоединяйся к нам и стань частью сильного сообщества!</p>
-            <a href="#contact" class="btn btn-primary btn-lg">
-                <i class="bi bi-discord"></i> Вступить в клан
+            <p class="lead mb-4" style="color: var(--text-color)">Элитное сообщество в мире RAID SL</p>
+            <p class="mb-5 mx-auto" style="max-width: 600px; color: var(--text-color)">
+                Мы объединяем лучших игроков для прохождения сложного контента, 
+                дружеского общения и достижения общих целей.
+            </p>
+            <a href="#contact" class="btn btn-primary btn-lg shadow-sm">
+                <i class="bi bi-discord me-2"></i> Присоединиться
             </a>
         </div>
     </section>
@@ -145,23 +171,23 @@
     <!-- Статистика -->
     <section class="py-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-8">
                     <div class="stats-box">
                         <div class="stats-number">50+</div>
-                        <div>Активных игроков</div>
+                        <div class="mt-2 fw-bold">Игроков</div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-8">
                     <div class="stats-box">
                         <div class="stats-number">100+</div>
-                        <div>Успешных рейдов</div>
+                        <div class="mt-2 fw-bold">Рейдов</div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-8">
                     <div class="stats-box">
                         <div class="stats-number">24/7</div>
-                        <div>Поддержка участников</div>
+                        <div class="mt-2 fw-bold">Активность</div>
                     </div>
                 </div>
             </div>
@@ -171,18 +197,17 @@
     <!-- О клане -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title mb-5">О нашем клане</h2>
+            <h2 class="text-center section-title">О нашем клане</h2>
             <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <p class="text-center lead">
-                        HΞRØMI [HΞRØ] — это сообщество увлечённых игроков RAID SL, 
-                        объединённых общей целью: проходить сложный контент, помогать друг другу 
-                        и получать удовольствие от игры.
+                <div class="col-md-8 mx-auto text-center">
+                    <p class="lead">
+                        HΞRØMI [HΞRØ] — это не просто список ников, это семья. 
+                        Мы создали этот клан, чтобы играть комфортно, эффективно и весело.
                     </p>
-                    <p class="text-center">
-                        Мы ценим командную работу, взаимопомощь и позитивную атмосферу. 
-                        Независимо от твоего уровня, здесь ты найдёшь место для развития 
-                        и интересных приключений.
+                    <p>
+                        Здесь нет места токсичности. Мы ценим адекватность, желание учиться 
+                        и помогать тиммейтам. Если ты ищешь место, где тебя поддержат 
+                        и помогут прокачаться — ты нашёл его.
                     </p>
                 </div>
             </div>
@@ -190,35 +215,29 @@
     </section>
 
     <!-- Преимущества -->
-    <section id="features" class="py-5">
+    <section id="features" class="py-5 bg-white" style="background-color: #fff !important;">
         <div class="container">
-            <h2 class="text-center section-title mb-5">Почему мы?</h2>
+            <h2 class="text-center section-title">Почему мы?</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 p-4 text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-people-fill"></i>
-                        </div>
-                        <h4>Дружное сообщество</h4>
-                        <p>Активные участники, готовые помочь новичкам и поделиться опытом</p>
+                    <div class="card h-100 p-4 text-center border-0 shadow-sm">
+                        <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+                        <h4>Комьюнити</h4>
+                        <p>Дружный коллектив, где каждый голос слышен. Регулярные ивенты и общение.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 p-4 text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-trophy-fill"></i>
-                        </div>
-                        <h4>Регулярные рейды</h4>
-                        <p>Организованные мероприятия с опытными лидерами групп</p>
+                    <div class="card h-100 p-4 text-center border-0 shadow-sm">
+                        <div class="feature-icon"><i class="bi bi-trophy-fill"></i></div>
+                        <h4>Прогресс</h4>
+                        <p>Организованные рейды по расписанию. Помогаем закрывать сложный контент.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 p-4 text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-chat-dots-fill"></i>
-                        </div>
-                        <h4>Discord сервер</h4>
-                        <p>Удобная площадка для общения, координации и обмена информацией</p>
+                    <div class="card h-100 p-4 text-center border-0 shadow-sm">
+                        <div class="feature-icon"><i class="bi bi-chat-square-text-fill"></i></div>
+                        <h4>Связь</h4>
+                        <p>Удобный Discord сервер с каналами для гайдов, оффтопа и координации.</p>
                     </div>
                 </div>
             </div>
@@ -228,34 +247,28 @@
     <!-- Требования -->
     <section id="requirements" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title mb-5">Требования для вступления</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                    Активный игровой аккаунт RAID SL
-                                </li>
-                                <li class="mb-3">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                    Готовность участвовать в рейдах минимум 2-3 раза в неделю
-                                </li>
-                                <li class="mb-3">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                    Уважительное отношение к другим игрокам
-                                </li>
-                                <li class="mb-3">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                    Наличие Discord для связи с кланом
-                                </li>
-                                <li class="mb-3">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                    Желание развиваться и помогать команде
-                                </li>
-                            </ul>
-                        </div>
+            <h2 class="text-center section-title">Требования</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-4">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-check-circle-fill text-accent me-3 fs-4"></i>
+                                <span>Активный аккаунт в RAID SL и желание играть</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-check-circle-fill text-accent me-3 fs-4"></i>
+                                <span>Возраст 16+ (для адекватного общения)</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-check-circle-fill text-accent me-3 fs-4"></i>
+                                <span>Наличие микрофона и Discord</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-check-circle-fill text-accent me-3 fs-4"></i>
+                                <span>Готовность участвовать в жизни клана</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -264,16 +277,16 @@
 
     <!-- Контакты -->
     <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title mb-5">Связаться с нами</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto text-center">
-                    <div class="card p-4">
-                        <h4 class="mb-3"><i class="bi bi-discord text-primary"></i> Discord</h4>
-                        <p class="mb-3">[Вставь ссылку на Discord сервер]</p>
-                        <hr>
-                        <h4 class="mb-3"><i class="bi bi-controller text-primary"></i> Игра</h4>
-                        <p class="mb-0">RAID SL</p>
+        <div class="container text-center">
+            <h2 class="section-title">Связаться с нами</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-5">
+                        <h4 class="mb-3"><i class="bi bi-discord text-accent"></i> Наш Discord</h4>
+                        <p class="mb-4">Переходи по ссылке ниже, чтобы подать заявку или просто пообщаться:</p>
+                        <a href="#" class="btn btn-primary w-100">
+                            Вступить в Discord сервер
+                        </a>
                     </div>
                 </div>
             </div>
@@ -283,8 +296,8 @@
     <!-- Футер -->
     <footer class="text-center">
         <div class="container">
-            <p class="mb-2">&copy; 2026 HΞRØMI [HΞRØ]. Все права защищены.</p>
-            <p class="small text-muted">Клан в игре RAID SL</p>
+            <p class="mb-1 fw-bold">&copy; 2026 HΞRØMI [HΞRØ]</p>
+            <p class="small opacity-75">RAID SL Clan Page</p>
         </div>
     </footer>
 
